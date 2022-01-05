@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: saga-processor-config
+requires:
+- path: ../base
+build:
+  artifacts:
+  - image: saga-processor
+    requires:
+    - image: base
+      alias: BASE
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/*
+portForward:
+- resourceType: deployment
+  resourceName: saga-processor
+  port: http
+  localPort: 8080
