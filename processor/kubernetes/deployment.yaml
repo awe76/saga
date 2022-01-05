@@ -8,6 +8,8 @@ spec:
   clusterIP: None
   ports:
     - port: 50051
+      protocol: TCP
+      targetPort: 50051
       name: saga-processor
   selector:
     app: saga-processor
@@ -33,4 +35,5 @@ spec:
         image: saga-processor
         ports:
         - containerPort: 50051
+          protocol: TCP
           name: http

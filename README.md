@@ -7,6 +7,6 @@
 
 ```bash
 minikube start
-skaffold dev
+skaffold dev --port-forward
 ```
 

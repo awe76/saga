@@ -1,5 +1,5 @@
 syntax = "proto3";
-package gateway.workflowapis.v1;
+package workflowapis.v1;
 option go_package = "github.com/awe76/saga/gateway/workflowapis/v1";
 
 import "google/api/annotations.proto";

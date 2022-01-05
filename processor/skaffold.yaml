@@ -18,4 +18,4 @@ portForward:
 - resourceType: deployment
   resourceName: saga-processor
   port: http
-  localPort: 8080
+  localPort: 9001

@@ -8,7 +8,7 @@ import (
 
 	// This import path is based on the name declaration in the go.mod,
 	// and the gen/proto/go output location in the buf.gen.yaml.
-	processor "github.com/saga/processor/workflowapis/v1"
+	processor "github.com/awe76/saga/processor/workflowapis/v1"
 	"google.golang.org/grpc"
 )
 
@@ -19,7 +19,7 @@ func main() {
 }
 
 func run() error {
-	listenOn := "127.0.0.1:8080"
+	listenOn := "127.0.0.1:50051"
 	listener, err := net.Listen("tcp", listenOn)
 	if err != nil {
 		return fmt.Errorf("failed to listen on %s: %w", listenOn, err)
