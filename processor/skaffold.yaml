@@ -14,8 +14,3 @@ deploy:
   kubectl:
     manifests:
     - kubernetes/*
-portForward:
-- resourceType: deployment
-  resourceName: saga-processor
-  port: http
-  localPort: 9001
