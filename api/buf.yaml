@@ -1,0 +1,8 @@
+version: v1
+name: buf.build/awe76/sagadtapis
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT
