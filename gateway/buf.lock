@@ -2,9 +2,16 @@
 version: v1
 deps:
   - remote: buf.build
+    owner: awe76
+    repository: sagadtapis
+    branch: main
+    commit: d505c3e2895d44c3b53e00049343cfd2
+    digest: b1-1PbP0VzS2yMfX6RbA6IKdrh_ITv0y2dUAfUjrvdM6YU=
+    create_time: 2022-01-11T19:54:27.619451Z
+  - remote: buf.build
     owner: googleapis
     repository: googleapis
     branch: main
-    commit: 9088184d3ed04821b7e990024ff05656
-    digest: b1---R9Xre3yvH8peoJPQ0dsUYp37KzdlBlx5fjPsYekyI=
-    create_time: 2021-12-23T15:04:49.66847Z
+    commit: 803fe4e2f33540728928e1ee7b219c5f
+    digest: b1-Ph8H8BSf83iohW-pVUXRcPOk7Cb46n-uJ02bFQtY5Vs=
+    create_time: 2022-01-10T19:46:46.2122Z

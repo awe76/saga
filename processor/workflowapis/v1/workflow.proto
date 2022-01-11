@@ -2,15 +2,9 @@ syntax = "proto3";
 package workflowapis.v1;
 option go_package = "github.com/awe76/saga/processor/workflowapis/v1";
 
-message EchoRequest {
-  string value = 1;
-}
-
-message EchoResponse {
-  string value = 1;
-}
+import "sagadtapis/v1/sagadtapis.proto";
 
 service SagaWorkflowService {
-  rpc Echo(EchoRequest) returns (EchoResponse) {
+  rpc Echo(sagadtapis.v1.EchoRequest) returns (sagadtapis.v1.EchoResponse) {
   }
 }

@@ -13,6 +13,7 @@ import (
 	"io"
 	"net/http"
 
+	v1_0 "github.com/awe76/saga/api/sagadtapis/v1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -32,7 +33,7 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 func request_SagaWorkflowService_Echo_0(ctx context.Context, marshaler runtime.Marshaler, client SagaWorkflowServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq EchoRequest
+	var protoReq v1_0.EchoRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -49,7 +50,7 @@ func request_SagaWorkflowService_Echo_0(ctx context.Context, marshaler runtime.M
 }
 
 func local_request_SagaWorkflowService_Echo_0(ctx context.Context, marshaler runtime.Marshaler, server SagaWorkflowServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq EchoRequest
+	var protoReq v1_0.EchoRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)

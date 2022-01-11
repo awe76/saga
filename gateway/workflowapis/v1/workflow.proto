@@ -2,18 +2,11 @@ syntax = "proto3";
 package workflowapis.v1;
 option go_package = "github.com/awe76/saga/gateway/workflowapis/v1";
 
+import "sagadtapis/v1/sagadtapis.proto";
 import "google/api/annotations.proto";
 
-message EchoRequest {
-  string value = 1;
-}
-
-message EchoResponse {
-  string value = 1;
-}
-
 service SagaWorkflowService {
-  rpc Echo(EchoRequest) returns (EchoResponse) {
+  rpc Echo(sagadtapis.v1.EchoRequest) returns (sagadtapis.v1.EchoResponse) {
     option (google.api.http) = {
       post: "/v1/saga-workflow"
       body: "*"

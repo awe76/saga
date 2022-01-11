@@ -8,6 +8,7 @@ package v1
 
 import (
 	context "context"
+	v1 "github.com/awe76/saga/api/sagadtapis/v1"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SagaWorkflowServiceClient interface {
-	Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error)
+	Echo(ctx context.Context, in *v1.EchoRequest, opts ...grpc.CallOption) (*v1.EchoResponse, error)
 }
 
 type sagaWorkflowServiceClient struct {
@@ -33,8 +34,8 @@ func NewSagaWorkflowServiceClient(cc grpc.ClientConnInterface) SagaWorkflowServi
 	return &sagaWorkflowServiceClient{cc}
 }
 
-func (c *sagaWorkflowServiceClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error) {
-	out := new(EchoResponse)
+func (c *sagaWorkflowServiceClient) Echo(ctx context.Context, in *v1.EchoRequest, opts ...grpc.CallOption) (*v1.EchoResponse, error) {
+	out := new(v1.EchoResponse)
 	err := c.cc.Invoke(ctx, "/workflowapis.v1.SagaWorkflowService/Echo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -46,7 +47,7 @@ func (c *sagaWorkflowServiceClient) Echo(ctx context.Context, in *EchoRequest, o
 // All implementations must embed UnimplementedSagaWorkflowServiceServer
 // for forward compatibility
 type SagaWorkflowServiceServer interface {
-	Echo(context.Context, *EchoRequest) (*EchoResponse, error)
+	Echo(context.Context, *v1.EchoRequest) (*v1.EchoResponse, error)
 	mustEmbedUnimplementedSagaWorkflowServiceServer()
 }
 
@@ -54,7 +55,7 @@ type SagaWorkflowServiceServer interface {
 type UnimplementedSagaWorkflowServiceServer struct {
 }
 
-func (UnimplementedSagaWorkflowServiceServer) Echo(context.Context, *EchoRequest) (*EchoResponse, error) {
+func (UnimplementedSagaWorkflowServiceServer) Echo(context.Context, *v1.EchoRequest) (*v1.EchoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Echo not implemented")
 }
 func (UnimplementedSagaWorkflowServiceServer) mustEmbedUnimplementedSagaWorkflowServiceServer() {}
@@ -71,7 +72,7 @@ func RegisterSagaWorkflowServiceServer(s grpc.ServiceRegistrar, srv SagaWorkflow
 }
 
 func _SagaWorkflowService_Echo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EchoRequest)
+	in := new(v1.EchoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -83,7 +84,7 @@ func _SagaWorkflowService_Echo_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/workflowapis.v1.SagaWorkflowService/Echo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SagaWorkflowServiceServer).Echo(ctx, req.(*EchoRequest))
+		return srv.(SagaWorkflowServiceServer).Echo(ctx, req.(*v1.EchoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

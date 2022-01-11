@@ -3,6 +3,7 @@ module github.com/awe76/saga/gateway
 go 1.17
 
 require (
+	github.com/awe76/saga v0.0.0-20220111195713-fabd95c01351
 	github.com/golang/glog v1.0.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.2
 	google.golang.org/genproto v0.0.0-20211223182754-3ac035c7e7cb
