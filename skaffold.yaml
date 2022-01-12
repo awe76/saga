@@ -3,3 +3,4 @@ kind: Config
 requires:
 - path: ./processor
 - path: ./gateway
+- path: ./store
