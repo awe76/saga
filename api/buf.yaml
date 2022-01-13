@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/awe76/sagadtapis
+name: buf.build/awe76/saga
 breaking:
   use:
     - FILE
