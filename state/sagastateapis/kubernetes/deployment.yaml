@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: state
+  labels:
+    app: state
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: state
+  template:
+    metadata:
+      labels:
+        app: state
+    spec:
+      containers:
+      - name: state
+        image: state
+        ports:
+        - containerPort: 50056
+          protocol: TCP
+          name: http

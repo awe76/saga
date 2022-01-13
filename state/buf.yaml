@@ -1,0 +1,10 @@
+version: v1
+name: buf.build/awe76/sagastateapis
+deps:
+  - buf.build/awe76/sagatransactionapis
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT

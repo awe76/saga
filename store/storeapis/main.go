@@ -2,15 +2,25 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
 	"net"
+	"strings"
 	"time"
 
 	store "github.com/awe76/saga/store/storeapis/v1"
 	clientv3 "go.etcd.io/etcd/client/v3"
 
 	"google.golang.org/grpc"
+)
+
+var (
+	// command-line options:
+	// gRPC store server endpoint
+	grpcStoreServerEndpoint = flag.String("grpc-store-server-endpoint", ":50055", "gRPC store server endpoint")
+	// etdc endpoints
+	etdcEndpoints = flag.String("etdc-endpoints", ":2379,:22379,:32379", "etdc ports")
 )
 
 func main() {
@@ -20,10 +30,9 @@ func main() {
 }
 
 func run() error {
-	listenOn := ":50055"
-	listener, err := net.Listen("tcp", listenOn)
+	listener, err := net.Listen("tcp", *grpcStoreServerEndpoint)
 	if err != nil {
-		return fmt.Errorf("failed to listen on %s: %w", listenOn, err)
+		return fmt.Errorf("failed to listen on %s: %w", *grpcStoreServerEndpoint, err)
 	}
 
 	server := grpc.NewServer()
@@ -37,7 +46,7 @@ func run() error {
 	defer service.Close()
 
 	store.RegisterStoreServiceServer(server, service)
-	log.Println("Listening on", listenOn)
+	log.Println("Listening on", *grpcStoreServerEndpoint)
 	if err := server.Serve(listener); err != nil {
 		return fmt.Errorf("failed to serve gRPC server: %w", err)
 	}
@@ -52,7 +61,7 @@ type storeServiceServer struct {
 
 func NewStoreServiceServer() (*storeServiceServer, error) {
 	cli, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{":2379", ":22379", ":32379"},
+		Endpoints:   strings.Split(*etdcEndpoints, ","),
 		DialTimeout: 5 * time.Second,
 	})
 	if err != nil {
