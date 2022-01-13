@@ -2,10 +2,31 @@ syntax = "proto3";
 package sagadtapis.v1;
 option go_package = "github.com/awe76/saga/api/sagadtapis/v1";
 
+import "google/protobuf/any.proto";
+
 message EchoRequest {
   string value = 1;
 }
 
 message EchoResponse {
   string value = 1;
+}
+
+message Operation {
+  string name = 1;
+  string from = 2;
+  string to = 3;
+}
+
+message Values {
+  map<string, google.protobuf.Any> values = 1;
+}
+
+message State {
+  string id = 1;
+  bool is_rollback = 2;
+  bool completed = 3;
+  map<string, Operation> done = 4;
+  map<string, Operation> in_progress = 5;
+  map<string, Values> data = 6;
 }
