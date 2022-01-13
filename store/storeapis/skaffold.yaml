@@ -3,7 +3,7 @@ kind: Config
 metadata:
   name: store-config
 requires:
-- path: ../base
+- path: ../../base
 build:
   artifacts:
   - image: store
