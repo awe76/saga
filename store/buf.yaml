@@ -1,4 +1,5 @@
 version: v1
+name: buf.build/awe76/storeapis
 breaking:
   use:
     - FILE
