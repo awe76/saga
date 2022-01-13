@@ -1,4 +1,4 @@
-module github.com/awe76/saga/api/sagatransaction
+module github.com/awe76/saga/api/sagatransactionapis
 
 go 1.17
 
