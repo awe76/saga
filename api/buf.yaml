@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/awe76/saga
+name: buf.build/awe76/sagatransaction
 breaking:
   use:
     - FILE
