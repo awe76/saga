@@ -15,7 +15,6 @@ import (
 	api "github.com/awe76/saga/api/sagatransactionapis/v1"
 	state "github.com/awe76/saga/state/sagastateapis/v1"
 	store "github.com/awe76/saga/store/storeapis/v1"
-	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 var (
@@ -90,7 +89,7 @@ func (s *sagaStateServiceServer) Init(ctx context.Context, req *state.InitReques
 	}
 
 	values := &api.Values{
-		Values: make(map[string]*anypb.Any),
+		Values: make(map[string]string),
 	}
 
 	values.Values["input"] = req.Payload

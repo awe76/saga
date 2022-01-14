@@ -20,7 +20,7 @@ skaffold dev --port-forward
 ```
 ## Send query
 ```bash
-curl -d '{"value":"hi"}' -H "Content-type: application/json" -X POST http://localhost:9000/v1/saga-workflow
+curl -d '{"start":"start-value", "payload":"test-payload"}' -H "Content-type: application/json" -X POST http://localhost:9000/v1/saga-state
 ```
 
 ## Utilities 

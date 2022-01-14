@@ -35,8 +35,9 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
-github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220113175907-bc4779cc8910 h1:4oBZndhOEyGjeGke9I58YQ2sRWo5BqlaRtKNPKogQA4=
 github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220113175907-bc4779cc8910/go.mod h1:oSEsFk/aH3ymK/G1Eq/SGBk1LQPHPSBD2KLE4W029RM=
+github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220114003236-55d2c7ec25c3 h1:Z9Njkh4LegOf3Y1ShuJAOa1Q3DvZevGr6i2mzWEzl8E=
+github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220114003236-55d2c7ec25c3/go.mod h1:oSEsFk/aH3ymK/G1Eq/SGBk1LQPHPSBD2KLE4W029RM=
 github.com/awe76/saga/state/sagastateapis v0.0.0-20220113233428-cb68bc613dd0 h1:adOsgONmmVBeKMLQmzplhI6+Cscl622588MaxFRSH3M=
 github.com/awe76/saga/state/sagastateapis v0.0.0-20220113233428-cb68bc613dd0/go.mod h1:hksZi6Cbs0DL1pqhs87HkeeuWa987rjoGwjxbihbIrs=
 github.com/awe76/saga/store/storeapis v0.0.0-20220113160610-186176371ffc/go.mod h1:fkgoKtxluo7X+g5IWiLEkRidg9PixVdGT8oGNBtkyok=

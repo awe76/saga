@@ -13,7 +13,7 @@ import (
 	"io"
 	"net/http"
 
-	v1_1 "github.com/awe76/saga/state/sagastateapis/v1"
+	v1_0 "github.com/awe76/saga/state/sagastateapis/v1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -33,7 +33,7 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 func request_SagaStateService_Init_0(ctx context.Context, marshaler runtime.Marshaler, client SagaStateServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq v1_1.InitRequest
+	var protoReq v1_0.InitRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -50,7 +50,7 @@ func request_SagaStateService_Init_0(ctx context.Context, marshaler runtime.Mars
 }
 
 func local_request_SagaStateService_Init_0(ctx context.Context, marshaler runtime.Marshaler, server SagaStateServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq v1_1.InitRequest
+	var protoReq v1_0.InitRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)

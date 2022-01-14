@@ -5,16 +5,16 @@ deps:
     owner: awe76
     repository: sagastateapis
     branch: main
-    commit: 5a821c0312d44daa8b14120171225a21
-    digest: b1-2EdsRaf67N7H2C6aFTwBRUHzF1F-NL3jpKhvOnMpKVo=
-    create_time: 2022-01-13T23:31:13.738929Z
+    commit: c45465bf7aea46da84376d618f75ab17
+    digest: b1-CyV5v76KEYZOwWM-aEXR_L5_buk6SRm4ynYQRBaCwKc=
+    create_time: 2022-01-14T00:40:45.21581Z
   - remote: buf.build
     owner: awe76
     repository: sagatransactionapis
     branch: main
-    commit: a546274c576d4d72980a3f8305f506d4
-    digest: b1-exD3J-Yz7RAR-Euhthz-__bX5fHcTl_DQma8375K_FM=
-    create_time: 2022-01-13T15:34:17.669527Z
+    commit: 1c87fc2d7fc04ffcb18b4e1ed7f3fa01
+    digest: b1-FOjhj386DcCifu0mTzdaBWQUCZuW4YZBqqR6rIrSxWE=
+    create_time: 2022-01-14T00:29:18.490055Z
   - remote: buf.build
     owner: googleapis
     repository: googleapis
