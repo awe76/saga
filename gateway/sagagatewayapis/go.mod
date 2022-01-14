@@ -1,18 +1,19 @@
-module github.com/awe76/saga/gateway
+module github.com/awe76/saga/gateway/sagagatewayapis
 
 go 1.17
 
 require (
-	github.com/awe76/saga v0.0.0-20220111195713-fabd95c01351
+	github.com/awe76/saga/state/sagastateapis v0.0.0-20220113233428-cb68bc613dd0
 	github.com/golang/glog v1.0.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.2
-	google.golang.org/genproto v0.0.0-20211223182754-3ac035c7e7cb
+	google.golang.org/genproto v0.0.0-20220112215332-a9c7c0acf9f2
 	google.golang.org/grpc v1.43.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0
 	google.golang.org/protobuf v1.27.1
 )
 
 require (
+	github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220113175907-bc4779cc8910 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
 	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4 // indirect

@@ -1,7 +1,7 @@
 version: v1
-name: buf.build/awe76/saga
+name: buf.build/awe76/sagagatewayapis
 deps:
-  - buf.build/awe76/sagadtapis
+  - buf.build/awe76/sagastateapis
   - buf.build/googleapis/googleapis
 breaking:
   use:

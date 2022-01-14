@@ -2,8 +2,6 @@ syntax = "proto3";
 package sagatransactionapis.v1;
 option go_package = "github.com/awe76/saga/api/sagatransactionapis/v1";
 
-import "google/protobuf/any.proto";
-
 message EchoRequest {
   string value = 1;
 }
@@ -19,7 +17,7 @@ message Operation {
 }
 
 message Values {
-  map<string, google.protobuf.Any> values = 1;
+  map<string, string> values = 1;
 }
 
 message State {

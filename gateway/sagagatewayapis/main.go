@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"log"
 	"net/http"
 
 	"github.com/golang/glog"
@@ -10,13 +11,15 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	gw "github.com/awe76/saga/gateway/workflowapis/v1" // Update
+	gw "github.com/awe76/saga/gateway/sagagatewayapis/v1" // Update
 )
 
 var (
 	// command-line options:
-	// gRPC server endpoint
-	grpcServerEndpoint = flag.String("grpc-server-endpoint", "saga-processor:50051", "gRPC server endpoint")
+	// gRPC state server endpoint
+	grpcStateServerEndpoint = flag.String("grpc-state-server-endpoint", "state:50056", "gRPC state server endpoint")
+	// gRPC gateway endpoint
+	grpcGatewayEndpoint = flag.String("grpc-gateway-endpoint", ":8081", "gRPC gateway endpoint")
 )
 
 func run() error {
@@ -28,13 +31,15 @@ func run() error {
 	// Note: Make sure the gRPC server is running properly and accessible
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
-	err := gw.RegisterSagaWorkflowServiceHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts)
+	err := gw.RegisterSagaStateServiceHandlerFromEndpoint(ctx, mux, *grpcStateServerEndpoint, opts)
 	if err != nil {
 		return err
 	}
 
+	log.Println("Listening on", *grpcGatewayEndpoint)
+
 	// Start HTTP server (and proxy calls to gRPC server endpoint)
-	return http.ListenAndServe(":8081", mux)
+	return http.ListenAndServe(*grpcGatewayEndpoint, mux)
 }
 
 func main() {

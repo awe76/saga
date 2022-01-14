@@ -1,0 +1,15 @@
+syntax = "proto3";
+package sagagatewayapis.v1;
+option go_package = "github.com/awe76/saga/gateway/sagagatewayapis/v1";
+
+import "sagastateapis/v1/stateapis.proto";
+import "google/api/annotations.proto";
+
+service SagaStateService {
+  rpc Init(sagastateapis.v1.InitRequest) returns (sagastateapis.v1.InitResponse) {
+    option (google.api.http) = {
+      post: "/v1/saga-state"
+      body: "*"
+    };
+  }
+}

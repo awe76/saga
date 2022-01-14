@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: saga-gateway
+  name: gateway
   labels:
-    app: saga-gateway
+    app: gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: saga-gateway
+      app: gateway
   template:
     metadata:
       labels:
-        app: saga-gateway
+        app: gateway
     spec:
       containers:
-        - name: saga-gateway
-          image: saga-gateway
+        - name: gateway
+          image: gateway
           ports:
             - containerPort: 8081
