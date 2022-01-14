@@ -14,6 +14,20 @@ spec:
   selector:
     app: store
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store
+  labels:
+    app: store
+spec:
+  clusterIP: None
+  ports:
+    - port: 50055
+      name: store
+  selector:
+    app: store
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -6,9 +6,8 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"time"
 
-	"github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/jsonpb"
 	"github.com/google/uuid"
 	"google.golang.org/grpc"
 
@@ -40,6 +39,7 @@ func run() error {
 	server := grpc.NewServer()
 
 	service, err := NewStateServiceServer()
+	defer service.Close()
 
 	if err != nil {
 		return fmt.Errorf("failed to create gRPC server: %w", err)
@@ -57,6 +57,7 @@ func run() error {
 type sagaStateServiceServer struct {
 	state.UnimplementedSagaStateServiceServer
 	client store.StoreServiceClient
+	conn   *grpc.ClientConn
 }
 
 func NewStateServiceServer() (*sagaStateServiceServer, error) {
@@ -64,16 +65,20 @@ func NewStateServiceServer() (*sagaStateServiceServer, error) {
 	if err != nil {
 		return nil, fmt.Errorf("did not connect: %v", err)
 	}
-	defer conn.Close()
 
 	client := store.NewStoreServiceClient(conn)
 	return &sagaStateServiceServer{
 		client: client,
+		conn:   conn,
 	}, nil
 }
 
 func (s *sagaStateServiceServer) getKey(id string) string {
 	return fmt.Sprintf("workflow:state:%v", id)
+}
+
+func (s *sagaStateServiceServer) Close() {
+	s.conn.Close()
 }
 
 func (s *sagaStateServiceServer) Init(ctx context.Context, req *state.InitRequest) (*state.InitResponse, error) {
@@ -95,16 +100,14 @@ func (s *sagaStateServiceServer) Init(ctx context.Context, req *state.InitReques
 	values.Values["input"] = req.Payload
 	result.Data[req.Start] = values
 
-	putctx, cancel := context.WithTimeout(ctx, time.Second)
-	defer cancel()
-
-	value, err := proto.Marshal(result)
+	marshaler := jsonpb.Marshaler{}
+	value, err := marshaler.MarshalToString(result)
 
 	if err != nil {
 		return nil, err
 	}
 
-	_, err = s.client.Put(putctx, &store.PutRequest{Key: s.getKey(id), Value: string(value)})
+	_, err = s.client.Put(ctx, &store.PutRequest{Key: s.getKey(id), Value: value})
 
 	if err != nil {
 		return nil, err

@@ -8,7 +8,6 @@ package v1
 
 import (
 	context "context"
-	v1 "github.com/awe76/saga/state/sagastateapis/v1"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -23,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SagaStateServiceClient interface {
-	Init(ctx context.Context, in *v1.InitRequest, opts ...grpc.CallOption) (*v1.InitResponse, error)
+	Init(ctx context.Context, in *InitRequest, opts ...grpc.CallOption) (*InitResponse, error)
 }
 
 type sagaStateServiceClient struct {
@@ -34,9 +33,9 @@ func NewSagaStateServiceClient(cc grpc.ClientConnInterface) SagaStateServiceClie
 	return &sagaStateServiceClient{cc}
 }
 
-func (c *sagaStateServiceClient) Init(ctx context.Context, in *v1.InitRequest, opts ...grpc.CallOption) (*v1.InitResponse, error) {
-	out := new(v1.InitResponse)
-	err := c.cc.Invoke(ctx, "/sagagatewayapis.v1.SagaStateService/Init", in, out, opts...)
+func (c *sagaStateServiceClient) Init(ctx context.Context, in *InitRequest, opts ...grpc.CallOption) (*InitResponse, error) {
+	out := new(InitResponse)
+	err := c.cc.Invoke(ctx, "/sagastateapis.v1.SagaStateService/Init", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +46,7 @@ func (c *sagaStateServiceClient) Init(ctx context.Context, in *v1.InitRequest, o
 // All implementations must embed UnimplementedSagaStateServiceServer
 // for forward compatibility
 type SagaStateServiceServer interface {
-	Init(context.Context, *v1.InitRequest) (*v1.InitResponse, error)
+	Init(context.Context, *InitRequest) (*InitResponse, error)
 	mustEmbedUnimplementedSagaStateServiceServer()
 }
 
@@ -55,7 +54,7 @@ type SagaStateServiceServer interface {
 type UnimplementedSagaStateServiceServer struct {
 }
 
-func (UnimplementedSagaStateServiceServer) Init(context.Context, *v1.InitRequest) (*v1.InitResponse, error) {
+func (UnimplementedSagaStateServiceServer) Init(context.Context, *InitRequest) (*InitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Init not implemented")
 }
 func (UnimplementedSagaStateServiceServer) mustEmbedUnimplementedSagaStateServiceServer() {}
@@ -72,7 +71,7 @@ func RegisterSagaStateServiceServer(s grpc.ServiceRegistrar, srv SagaStateServic
 }
 
 func _SagaStateService_Init_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v1.InitRequest)
+	in := new(InitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -81,10 +80,10 @@ func _SagaStateService_Init_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/sagagatewayapis.v1.SagaStateService/Init",
+		FullMethod: "/sagastateapis.v1.SagaStateService/Init",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SagaStateServiceServer).Init(ctx, req.(*v1.InitRequest))
+		return srv.(SagaStateServiceServer).Init(ctx, req.(*InitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -93,7 +92,7 @@ func _SagaStateService_Init_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SagaStateService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "sagagatewayapis.v1.SagaStateService",
+	ServiceName: "sagastateapis.v1.SagaStateService",
 	HandlerType: (*SagaStateServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

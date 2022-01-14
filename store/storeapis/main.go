@@ -80,7 +80,7 @@ func (s *storeServiceServer) Close() {
 func (s *storeServiceServer) Put(ctx context.Context, req *store.PutRequest) (*store.PutResponse, error) {
 	ctx, cancel := context.WithTimeout(ctx, 200*time.Millisecond)
 	_, err := s.cli.Put(ctx, req.Key, req.Value)
-	cancel()
+	defer cancel()
 
 	if err != nil {
 		return nil, err
@@ -92,7 +92,7 @@ func (s *storeServiceServer) Put(ctx context.Context, req *store.PutRequest) (*s
 func (s *storeServiceServer) Get(ctx context.Context, req *store.GetRequest) (*store.GetResponse, error) {
 	ctx, cancel := context.WithTimeout(ctx, 200*time.Millisecond)
 	resp, err := s.cli.Get(ctx, req.Key)
-	cancel()
+	defer cancel()
 
 	if err != nil {
 		return nil, err

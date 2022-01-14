@@ -13,7 +13,6 @@ import (
 	"io"
 	"net/http"
 
-	v1_0 "github.com/awe76/saga/state/sagastateapis/v1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -33,7 +32,7 @@ var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
 func request_SagaStateService_Init_0(ctx context.Context, marshaler runtime.Marshaler, client SagaStateServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq v1_0.InitRequest
+	var protoReq InitRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -50,7 +49,7 @@ func request_SagaStateService_Init_0(ctx context.Context, marshaler runtime.Mars
 }
 
 func local_request_SagaStateService_Init_0(ctx context.Context, marshaler runtime.Marshaler, server SagaStateServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq v1_0.InitRequest
+	var protoReq InitRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -78,7 +77,7 @@ func RegisterSagaStateServiceHandlerServer(ctx context.Context, mux *runtime.Ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/sagagatewayapis.v1.SagaStateService/Init", runtime.WithHTTPPathPattern("/v1/saga-state"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/sagastateapis.v1.SagaStateService/Init", runtime.WithHTTPPathPattern("/v1/saga-state"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -140,7 +139,7 @@ func RegisterSagaStateServiceHandlerClient(ctx context.Context, mux *runtime.Ser
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/sagagatewayapis.v1.SagaStateService/Init", runtime.WithHTTPPathPattern("/v1/saga-state"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/sagastateapis.v1.SagaStateService/Init", runtime.WithHTTPPathPattern("/v1/saga-state"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

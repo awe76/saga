@@ -3,13 +3,6 @@ version: v1
 deps:
   - remote: buf.build
     owner: awe76
-    repository: sagastateapis
-    branch: main
-    commit: c45465bf7aea46da84376d618f75ab17
-    digest: b1-CyV5v76KEYZOwWM-aEXR_L5_buk6SRm4ynYQRBaCwKc=
-    create_time: 2022-01-14T00:40:45.21581Z
-  - remote: buf.build
-    owner: awe76
     repository: sagatransactionapis
     branch: main
     commit: 1c87fc2d7fc04ffcb18b4e1ed7f3fa01
