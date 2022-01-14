@@ -35,12 +35,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
-github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220113175907-bc4779cc8910/go.mod h1:oSEsFk/aH3ymK/G1Eq/SGBk1LQPHPSBD2KLE4W029RM=
 github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220114003236-55d2c7ec25c3 h1:Z9Njkh4LegOf3Y1ShuJAOa1Q3DvZevGr6i2mzWEzl8E=
 github.com/awe76/saga/api/sagatransactionapis v0.0.0-20220114003236-55d2c7ec25c3/go.mod h1:oSEsFk/aH3ymK/G1Eq/SGBk1LQPHPSBD2KLE4W029RM=
-github.com/awe76/saga/state/sagastateapis v0.0.0-20220113233428-cb68bc613dd0 h1:adOsgONmmVBeKMLQmzplhI6+Cscl622588MaxFRSH3M=
-github.com/awe76/saga/state/sagastateapis v0.0.0-20220113233428-cb68bc613dd0/go.mod h1:hksZi6Cbs0DL1pqhs87HkeeuWa987rjoGwjxbihbIrs=
-github.com/awe76/saga/store/storeapis v0.0.0-20220113160610-186176371ffc/go.mod h1:fkgoKtxluo7X+g5IWiLEkRidg9PixVdGT8oGNBtkyok=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash v1.1.0/go.mod h1:XrSqR1VqqWfGrhpAt58auRo0WTKS1nRRg3ghfAqPWnc=
 github.com/cespare/xxhash/v2 v2.1.1/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
@@ -122,7 +118,6 @@ github.com/google/pprof v0.0.0-20200430221834-fc25d7d30c6d/go.mod h1:ZgVRPoUq/hf
 github.com/google/pprof v0.0.0-20200708004538-1a94d8640e99/go.mod h1:ZgVRPoUq/hfqzAqh7sHMqb3I9Rq5C59dIz2SbBwJ4eM=
 github.com/google/renameio v0.1.0/go.mod h1:KWCgfxg9yswjAJkECMjeO8J8rahYeXnNhOm40UhjYkI=
 github.com/google/uuid v1.1.2/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
-github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/googleapis/gax-go/v2 v2.0.4/go.mod h1:0Wqv26UfaUD9n4G6kQubkQ+KchISgw+vpHVxEJEs9eg=
 github.com/googleapis/gax-go/v2 v2.0.5/go.mod h1:DWXyrwAJ9X0FpwwEdw+IPEYBICEFu5mhpdKc/us6bOk=
 github.com/grpc-ecosystem/grpc-gateway v1.16.0 h1:gmcG1KaJ57LophUzW0Hy8NmPhnMZb4M0+kPpLofRdBo=

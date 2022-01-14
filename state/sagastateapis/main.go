@@ -99,11 +99,17 @@ func (s *sagaStateServiceServer) update(ctx context.Context, id string, update f
 	key := s.getKey(id)
 	data, err := s.client.Get(ctx, &store.GetRequest{Key: key})
 
-	state := &api.State{}
+	state := &api.State{
+		Done:       make(map[string]*api.Operation),
+		InProgress: make(map[string]*api.Operation),
+		Data:       make(map[string]*api.Values),
+	}
 
 	if err != nil {
 		return state, err
 	}
+
+	log.Println("restored: ", data.Values[0])
 
 	err = jsonpb.UnmarshalString(data.Values[0], state)
 	if err != nil {

@@ -14,10 +14,27 @@ message InitResponse {
   sagatransactionapis.v1.State state = 1;
 }
 
+message CompleteOperationRequest {
+  bool is_rollback = 1;
+  string id = 2;
+  string payload = 3;
+  sagatransactionapis.v1.Operation operation = 4;
+}
+
+message CompleteOperationResponse {
+  sagatransactionapis.v1.State state = 1;
+}
+
 service SagaStateService {
   rpc Init(InitRequest) returns (InitResponse) {
     option (google.api.http) = {
-      post: "/v1/saga-state"
+      post: "/v1/state/init"
+      body: "*"
+    };
+  }
+  rpc CompleteOperation(CompleteOperationRequest) returns (CompleteOperationResponse) {
+    option (google.api.http) = {
+      post: "/v1/state/complete-operation"
       body: "*"
     };
   }
