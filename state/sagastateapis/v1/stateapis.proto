@@ -3,7 +3,6 @@ package sagastateapis.v1;
 option go_package = "github.com/awe76/saga/state/sagastateapis/v1";
 
 import "sagatransactionapis/v1/sagatransaction.proto";
-import "google/protobuf/any.proto";
 
 message InitRequest {
   string start = 1;
@@ -14,6 +13,48 @@ message InitResponse {
   sagatransactionapis.v1.State state = 1;
 }
 
+message CompleteOperationRequest {
+  bool is_rollback = 1;
+  string id = 2;
+  string payload = 3;
+  sagatransactionapis.v1.Operation operation = 4;
+}
+
+message CompleteOperationResponse {
+  sagatransactionapis.v1.State state = 1;
+}
+
+message FailOperationRequest {
+  string id = 1;
+  sagatransactionapis.v1.Operation operation = 2;
+}
+
+message FailOperationResponse {
+  sagatransactionapis.v1.State state = 1;
+}
+
+message SpawnOperationRequest {
+  bool is_rollback = 1;
+  string id = 2;
+  sagatransactionapis.v1.Operation operation = 3;
+}
+
+message SpawnOperationResponse {
+  sagatransactionapis.v1.State state = 1;
+}
+
+message EndWorkflowRequest {
+  string id = 1;
+}
+
+message EndWorkflowResponse {
+  sagatransactionapis.v1.State state = 1;
+}
+
 service SagaStateService {
   rpc Init(InitRequest) returns (InitResponse) {}
+  rpc CompleteOperation(CompleteOperationRequest) returns (CompleteOperationResponse) {}
+  rpc FailOperation(FailOperationRequest) returns (FailOperationResponse) {}
+  rpc SpawnOperation(SpawnOperationRequest) returns (SpawnOperationResponse) {}
+  rpc EndWorkflow(EndWorkflowRequest) returns (EndWorkflowResponse) {}
 }

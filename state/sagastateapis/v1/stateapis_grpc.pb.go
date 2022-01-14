@@ -23,6 +23,10 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SagaStateServiceClient interface {
 	Init(ctx context.Context, in *InitRequest, opts ...grpc.CallOption) (*InitResponse, error)
+	CompleteOperation(ctx context.Context, in *CompleteOperationRequest, opts ...grpc.CallOption) (*CompleteOperationResponse, error)
+	FailOperation(ctx context.Context, in *FailOperationRequest, opts ...grpc.CallOption) (*FailOperationResponse, error)
+	SpawnOperation(ctx context.Context, in *SpawnOperationRequest, opts ...grpc.CallOption) (*SpawnOperationResponse, error)
+	EndWorkflow(ctx context.Context, in *EndWorkflowRequest, opts ...grpc.CallOption) (*EndWorkflowResponse, error)
 }
 
 type sagaStateServiceClient struct {
@@ -42,11 +46,51 @@ func (c *sagaStateServiceClient) Init(ctx context.Context, in *InitRequest, opts
 	return out, nil
 }
 
+func (c *sagaStateServiceClient) CompleteOperation(ctx context.Context, in *CompleteOperationRequest, opts ...grpc.CallOption) (*CompleteOperationResponse, error) {
+	out := new(CompleteOperationResponse)
+	err := c.cc.Invoke(ctx, "/sagastateapis.v1.SagaStateService/CompleteOperation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sagaStateServiceClient) FailOperation(ctx context.Context, in *FailOperationRequest, opts ...grpc.CallOption) (*FailOperationResponse, error) {
+	out := new(FailOperationResponse)
+	err := c.cc.Invoke(ctx, "/sagastateapis.v1.SagaStateService/FailOperation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sagaStateServiceClient) SpawnOperation(ctx context.Context, in *SpawnOperationRequest, opts ...grpc.CallOption) (*SpawnOperationResponse, error) {
+	out := new(SpawnOperationResponse)
+	err := c.cc.Invoke(ctx, "/sagastateapis.v1.SagaStateService/SpawnOperation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sagaStateServiceClient) EndWorkflow(ctx context.Context, in *EndWorkflowRequest, opts ...grpc.CallOption) (*EndWorkflowResponse, error) {
+	out := new(EndWorkflowResponse)
+	err := c.cc.Invoke(ctx, "/sagastateapis.v1.SagaStateService/EndWorkflow", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SagaStateServiceServer is the server API for SagaStateService service.
 // All implementations must embed UnimplementedSagaStateServiceServer
 // for forward compatibility
 type SagaStateServiceServer interface {
 	Init(context.Context, *InitRequest) (*InitResponse, error)
+	CompleteOperation(context.Context, *CompleteOperationRequest) (*CompleteOperationResponse, error)
+	FailOperation(context.Context, *FailOperationRequest) (*FailOperationResponse, error)
+	SpawnOperation(context.Context, *SpawnOperationRequest) (*SpawnOperationResponse, error)
+	EndWorkflow(context.Context, *EndWorkflowRequest) (*EndWorkflowResponse, error)
 	mustEmbedUnimplementedSagaStateServiceServer()
 }
 
@@ -56,6 +100,18 @@ type UnimplementedSagaStateServiceServer struct {
 
 func (UnimplementedSagaStateServiceServer) Init(context.Context, *InitRequest) (*InitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Init not implemented")
+}
+func (UnimplementedSagaStateServiceServer) CompleteOperation(context.Context, *CompleteOperationRequest) (*CompleteOperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompleteOperation not implemented")
+}
+func (UnimplementedSagaStateServiceServer) FailOperation(context.Context, *FailOperationRequest) (*FailOperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FailOperation not implemented")
+}
+func (UnimplementedSagaStateServiceServer) SpawnOperation(context.Context, *SpawnOperationRequest) (*SpawnOperationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SpawnOperation not implemented")
+}
+func (UnimplementedSagaStateServiceServer) EndWorkflow(context.Context, *EndWorkflowRequest) (*EndWorkflowResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EndWorkflow not implemented")
 }
 func (UnimplementedSagaStateServiceServer) mustEmbedUnimplementedSagaStateServiceServer() {}
 
@@ -88,6 +144,78 @@ func _SagaStateService_Init_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SagaStateService_CompleteOperation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompleteOperationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SagaStateServiceServer).CompleteOperation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagastateapis.v1.SagaStateService/CompleteOperation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SagaStateServiceServer).CompleteOperation(ctx, req.(*CompleteOperationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SagaStateService_FailOperation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FailOperationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SagaStateServiceServer).FailOperation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagastateapis.v1.SagaStateService/FailOperation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SagaStateServiceServer).FailOperation(ctx, req.(*FailOperationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SagaStateService_SpawnOperation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SpawnOperationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SagaStateServiceServer).SpawnOperation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagastateapis.v1.SagaStateService/SpawnOperation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SagaStateServiceServer).SpawnOperation(ctx, req.(*SpawnOperationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SagaStateService_EndWorkflow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EndWorkflowRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SagaStateServiceServer).EndWorkflow(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagastateapis.v1.SagaStateService/EndWorkflow",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SagaStateServiceServer).EndWorkflow(ctx, req.(*EndWorkflowRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SagaStateService_ServiceDesc is the grpc.ServiceDesc for SagaStateService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +226,22 @@ var SagaStateService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Init",
 			Handler:    _SagaStateService_Init_Handler,
+		},
+		{
+			MethodName: "CompleteOperation",
+			Handler:    _SagaStateService_CompleteOperation_Handler,
+		},
+		{
+			MethodName: "FailOperation",
+			Handler:    _SagaStateService_FailOperation_Handler,
+		},
+		{
+			MethodName: "SpawnOperation",
+			Handler:    _SagaStateService_SpawnOperation_Handler,
+		},
+		{
+			MethodName: "EndWorkflow",
+			Handler:    _SagaStateService_EndWorkflow_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
