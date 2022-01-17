@@ -2,14 +2,6 @@ syntax = "proto3";
 package sagatransactionapis.v1;
 option go_package = "github.com/awe76/saga/api/sagatransactionapis/v1";
 
-message EchoRequest {
-  string value = 1;
-}
-
-message EchoResponse {
-  string value = 1;
-}
-
 message Operation {
   string name = 1;
   string from = 2;
@@ -18,6 +10,14 @@ message Operation {
 
 message Values {
   map<string, string> values = 1;
+}
+
+message Workflow {
+  string name = 1;
+  string start = 2;
+  string end = 3;
+  string payload = 4;
+  repeated Operation operations = 5;
 }
 
 message State {
