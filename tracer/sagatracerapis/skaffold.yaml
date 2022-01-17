@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: tracer-config
+requires:
+- path: ../../base
+build:
+  artifacts:
+  - image: tracer
+    requires:
+    - image: base
+      alias: BASE
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/*

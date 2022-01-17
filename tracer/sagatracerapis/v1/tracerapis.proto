@@ -1,0 +1,30 @@
+syntax = "proto3";
+package sagatracerapis.v1;
+option go_package = "github.com/awe76/saga/tracer/sagatracerapis/v1";
+
+import "sagatransactionapis/v1/sagatransaction.proto";
+
+message TraceWorkflowRequest {
+  sagatransactionapis.v1.State state = 1;
+  sagatransactionapis.v1.Workflow workflow = 2;
+}
+
+message SpawnOperation {
+  sagatransactionapis.v1.Operation operation = 1;
+}
+
+message CompleteWorkflow {
+}
+
+message TraceWorkflowResponse {
+  string workflow_id = 1;
+  bool is_rollback = 2;
+  oneof action {
+    SpawnOperation spawn_operation = 3;
+    CompleteWorkflow complete_workflow = 4;
+  }
+}
+
+service SagaTracerService {
+  rpc TraceWorkflow(TraceWorkflowRequest) returns (stream TraceWorkflowResponse);
+}
