@@ -29,9 +29,6 @@ spec:
         app: processor
     spec:
       containers:
-      - name: nats
-        image: nats:latest
-        imagePullPolicy: IfNotPresent
       - name: processor
         image: processor
         ports:

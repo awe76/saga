@@ -7,7 +7,6 @@ import "google/api/annotations.proto";
 
 message ExecuteWorkflowRequest {
   sagatransactionapis.v1.Workflow workflow = 1;
-  string payload = 2;
 }
 
 message ExecuteWorkflowResponse {

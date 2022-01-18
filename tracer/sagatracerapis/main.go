@@ -48,7 +48,6 @@ type sagaTracerServiceServer struct {
 }
 
 func (s *sagaTracerServiceServer) TraceWorkflow(req *tracerapi.TraceWorkflowRequest, stream tracerapi.SagaTracerService_TraceWorkflowServer) error {
-
 	spawnOperation := func(op *api.Operation) error {
 		response := tracerapi.TraceWorkflowResponse{
 			WorkflowId: req.State.Id,
@@ -59,6 +58,7 @@ func (s *sagaTracerServiceServer) TraceWorkflow(req *tracerapi.TraceWorkflowRequ
 				},
 			},
 		}
+
 		return stream.Send(&response)
 	}
 

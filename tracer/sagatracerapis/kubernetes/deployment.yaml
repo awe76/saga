@@ -10,7 +10,7 @@ spec:
     - port: 50057
       name: tracer
   selector:
-    app: state
+    app: tracer
 ---
 apiVersion: apps/v1
 kind: Deployment

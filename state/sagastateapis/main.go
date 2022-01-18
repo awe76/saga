@@ -109,8 +109,6 @@ func (s *sagaStateServiceServer) update(ctx context.Context, id string, update f
 		return state, err
 	}
 
-	log.Println("restored: ", data.Values[0])
-
 	err = jsonpb.UnmarshalString(data.Values[0], state)
 	if err != nil {
 		return state, err

@@ -75,5 +75,11 @@ func (h *handlerServiceServer) HandleOperation(ctx context.Context, req *handler
 	resp.IsFailed = !req.IsRollback && rand.Float32() > 0.8
 	resp.Payload = string(payload)
 
+	if resp.IsFailed {
+		fmt.Printf("%s operation is failed\n", req.Operation.Name)
+	} else {
+		fmt.Printf("%s operation is completed\n", req.Operation.Name)
+	}
+
 	return &resp, nil
 }
