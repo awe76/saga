@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: processor-config
+requires:
+- path: ../../base
+build:
+  artifacts:
+  - image: processor
+    requires:
+    - image: base
+      alias: BASE
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/*

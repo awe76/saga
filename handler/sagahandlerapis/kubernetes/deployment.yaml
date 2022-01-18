@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: handler
+  labels:
+    app: handler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: handler
+  template:
+    metadata:
+      labels:
+        app: handler
+    spec:
+      containers:
+      - name: handler
+        image: handler

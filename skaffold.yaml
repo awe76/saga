@@ -4,4 +4,6 @@ requires:
 - path: ./store/storeapis
 - path: ./tracer/sagatracerapis
 - path: ./state/sagastateapis
+- path: ./processor/sagaprocessorapis
+- path: ./handler/sagahandlerapis
 - path: ./gateway/sagagatewayapis

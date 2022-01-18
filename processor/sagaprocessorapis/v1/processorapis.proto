@@ -1,9 +1,8 @@
 syntax = "proto3";
 package sagaprocessorapis.v1;
-option go_package = "github.com/awe76/saga/state/sagagatewayapis/v1";
+option go_package = "github.com/awe76/saga/processor/sagaprocessorapis/v1";
 
 import "sagatransactionapis/v1/sagatransaction.proto";
-import "google/api/annotations.proto";
 
 message ExecuteWorkflowRequest {
   sagatransactionapis.v1.Workflow workflow = 1;
@@ -15,10 +14,5 @@ message ExecuteWorkflowResponse {
 }
 
 service SagaProcessorService {
-  rpc ExecuteWorkflow(ExecuteWorkflowRequest) returns (ExecuteWorkflowResponse) {
-    option (google.api.http) = {
-      post: "/v1/saga-processor/execute-workflow"
-      body: "*"
-    };
-  }
+  rpc ExecuteWorkflow(ExecuteWorkflowRequest) returns (ExecuteWorkflowResponse);
 }

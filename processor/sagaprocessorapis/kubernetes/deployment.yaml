@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: processor
+  labels:
+    app: processor
+spec:
+  clusterIP: None
+  ports:
+    - port: 50058
+      name: processor
+  selector:
+    app: processor
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor
+  labels:
+    app: processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: processor
+  template:
+    metadata:
+      labels:
+        app: processor
+    spec:
+      containers:
+      - name: nats
+        image: nats:latest
+        imagePullPolicy: IfNotPresent
+      - name: processor
+        image: processor
+        ports:
+        - containerPort: 50058
+          protocol: TCP
+          name: http

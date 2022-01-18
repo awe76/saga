@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: handler-config
+requires:
+- path: ../../base
+build:
+  artifacts:
+  - image: handler
+    requires:
+    - image: base
+      alias: BASE
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/*

@@ -17,7 +17,7 @@ import (
 var (
 	// command-line options:
 	// gRPC state server endpoint
-	grpcStateServerEndpoint = flag.String("grpc-state-server-endpoint", "state:50056", "gRPC state server endpoint")
+	grpcSagaProcessorServerEndpoint = flag.String("grpc-state-server-endpoint", "processor:50058", "gRPC state server endpoint")
 	// gRPC gateway endpoint
 	grpcGatewayEndpoint = flag.String("grpc-gateway-endpoint", ":8081", "gRPC gateway endpoint")
 )
@@ -31,7 +31,7 @@ func run() error {
 	// Note: Make sure the gRPC server is running properly and accessible
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
-	err := gw.RegisterSagaStateServiceHandlerFromEndpoint(ctx, mux, *grpcStateServerEndpoint, opts)
+	err := gw.RegisterSagaProcessorServiceHandlerFromEndpoint(ctx, mux, *grpcSagaProcessorServerEndpoint, opts)
 	if err != nil {
 		return err
 	}

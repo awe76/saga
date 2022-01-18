@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             (unknown)
-// source: sagagatewayapis/v1/gateway.proto
+// source: sagaprocessorapis/v1/processorapis.proto
 
 package v1
 
@@ -101,5 +101,5 @@ var SagaProcessorService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "sagagatewayapis/v1/gateway.proto",
+	Metadata: "sagaprocessorapis/v1/processorapis.proto",
 }
