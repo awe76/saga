@@ -1,0 +1,24 @@
+syntax = "proto3";
+package sagahandlerapis.v1;
+option go_package = "github.com/awe76/saga/hangler/sagahandlerapis/v1";
+
+import "sagatransactionapis/v1/sagatransaction.proto";
+
+message HandleOperationRequest {
+  bool is_rollback = 1;
+  string workflow_id = 2;
+  string payload = 3;
+  sagatransactionapis.v1.Operation operation = 4;
+}
+
+message HandleOperationResponse {
+  bool is_rollback = 1;
+  string workflow_id = 2;
+  string payload = 3;
+  bool is_failed = 4;
+  sagatransactionapis.v1.Operation operation = 5;
+}
+
+service SagaHandlerService {
+  rpc HandleOperation(HandleOperationRequest) returns (HandleOperationResponse) {}
+}
