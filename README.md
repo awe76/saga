@@ -1,6 +1,10 @@
 # Saga POC
 
-The POC demonstartes the approach to build micro service oriented arhitecture on the bases of the [gRPC](https://grpc.io/docs/languages/go/basics/) framework designed by Google. 
+The POC demonstartes the approach to build micro service oriented arhitecture on the bases of the [gRPC](https://grpc.io/docs/languages/go/basics/) framework designed by Google.
+
+Solution architecture is represented on the figure below:
+
+![solution architecture](assets/solution-architecture.svg)
 
 ## Tools
 ### [gRPC](https://grpc.io/docs/languages/go/basics/)
